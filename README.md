@@ -39,9 +39,11 @@ Su windows prima di procedere però è necessario indicare la directory del file
 
 - `output`
     - `encodings.pkl`
-- `training`
-- `unknown`
-- `validation`
+- `training`: celebrità da 
+    - celebry_name
+    - ...
+- `unknown`: soggetti sconosciuti da testare
+- `validation`: con
 
 ## Comandi
 
@@ -51,3 +53,5 @@ Su windows prima di procedere però è necessario indicare la directory del file
 
 - `test -f`:
 
+#### dataset
+Il dataset è consultabile [qui](https://www.kaggle.com/datasets/adg1822/7-celebrity-images/)
