@@ -39,11 +39,11 @@ Su windows prima di procedere però è necessario indicare la directory del file
 
 - `output`
     - `encodings.pkl`
-- `training`: celebrità da 
+- `training`: celebrità da testare
     - celebry_name
     - ...
 - `unknown`: soggetti sconosciuti da testare
-- `validation`: con
+- `validation`
 
 ## Comandi
 
