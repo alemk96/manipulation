@@ -14,27 +14,28 @@ cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 480)
 
 counter  = 0
 face_match = False
-reference_img = cv2.imread('reference.png')
+reference_img = f'{os.getcwd()}\\reference.jpg'
+taked_img = f'{os.getcwd()}\\taked.jpg'
 
-def check_face(frame):
-    logging.debug("Checking face")
+def check_face(reference,frame):
     global face_match
-    logg
-    '''    global face_match
     
-    reference_img = cv2.imread('reference.png')
-    result = DeepFace.verify(frame, reference_img.copy())['verified']
+    #reference_img = cv2.imread('reference.png')
+    result = DeepFace.verify(reference, frame)
     try:
         if result:
             face_match = True
+            logging.info("Face match")
         else:
-            logging.debug("Not a match")
+            logging.info("Face not match")
             face_match = False
     except ValueError:
         face_match = False
-    '''
+    
 
-
+thread = threading.Thread(target=check_face, args=(reference_img,taked_img))
+thread.start()
+'''
 while True:
     ret, frame = cap.read()
     thread = threading.Thread(target=check_face, args=(frame,))
@@ -59,3 +60,4 @@ while True:
         break
     
 cv2.destroyAllWindows()
+'''
