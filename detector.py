@@ -42,7 +42,6 @@ def encode_know_faces(
     with encodings_location.open(mode="wb") as file:
         pickle.dump(name_encodings, file)
         
-#encode_know_faces()
 
 def _recognize_face(unknow_encoding, loaded_encodings):
     boolean_matches = face_recognition.compare_faces(
