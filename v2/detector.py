@@ -2,12 +2,22 @@ from pathlib import Path
 import face_recognition
 import pickle
 import os
+import argparse
 from collections import Counter
 from PIL import Image, ImageDraw
 
 BOUNDING_BOX_COLOR = "blue"
 TEXT_COLOR = "white"
 DEFAULT_ENCODINGS_PATH = Path("output/encodings.pkl")
+
+parser = argparse.ArgumentParser(description = "Recognize faces in an image")
+parser.add_argument("--train", action="store_true", help="Train on input data")
+parser.add_argument("--validate", action="store_true", help="Validate on trained model")
+parser.add_argument("--test", action="store_true", help="Test the trained model with an unknow image")
+parser.add_argument("-m", action="store", default="hog", choices=["hog","cnn"], help="Model to use for face detection")
+parser.add_argument("-f", action="store", default="training", help="Path to an image with an unknown face")
+
+args = parser.parse_args()
 
 Path("training").mkdir(exist_ok=True)
 Path("output").mkdir(exist_ok=True)
@@ -88,4 +98,13 @@ def validate (model: str = 'hog'):
             recognize_faces(
                 image_location=str(filepath.absolute()), model=model)
 
-validate()
+if __name__ == "__main__":
+    if args.train:
+        encode_know_faces()
+    elif args.validate:
+        validate(model=args.m)
+    elif args.test:
+        recognize_faces(image_location=args.f, model=args.m)
+    else:
+        print("Please specify an action")
+        parser.print_help()
