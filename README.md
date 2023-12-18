@@ -35,3 +35,19 @@ pip install -r requirements
 
 Su windows prima di procedere però è necessario indicare la directory del file `.whl` (la versione di default presenta bug sulle CPU AMD) nel caso non si disponesse di python 3.11 o superiore è necessario scaricare la versione corrispondente da [qui](https://github.com/z-mahmud22/Dlib_Windows_Python3.x).
 
+### Albero repository 
+
+- `output`
+    - `encodings.pkl`
+- `training`
+- `unknown`
+- `validation`
+
+## Comandi
+
+- `train`:
+
+- `validate`:
+
+- `test -f`:
+
