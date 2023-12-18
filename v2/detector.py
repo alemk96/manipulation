@@ -87,10 +87,6 @@ def recognize_faces(
         _display_face(draw, bounding_box, name)
     del draw
     pillow_image.show()
-    
-    
-       
-
 
 def validate (model: str = 'hog'):
     for filepath in Path("validation").rglob("*"):
@@ -104,6 +100,7 @@ if __name__ == "__main__":
     elif args.validate:
         validate(model=args.m)
     elif args.test:
+        #print(args.f)
         recognize_faces(image_location=args.f, model=args.m)
     else:
         print("Please specify an action")
